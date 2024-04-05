@@ -1,8 +1,8 @@
 terraform {
   backend "s3" {
-    bucket         = "my-terraform-states"
+    bucket         = "intuitivetfstate2024"
     key            = "${var.environment}/terraform.tfstate"
-    region         = "${var.region}"
+    region         = "eu-central-1"
     dynamodb_table = "my-lock-table"
     encrypt        = true
   }
