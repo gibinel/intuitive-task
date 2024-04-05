@@ -1,4 +1,7 @@
-variable "env" {}
+variable "environment" {
+  description = "S3 bucket enviroment"
+  type = string
+}
 
 variable "aws_region" {
   description = "AWS region for the S3 bucket"

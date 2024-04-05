@@ -1,8 +1,6 @@
 module "network" {
   source          = "../../../modules/network"
-  vpc_cidr        = var.vpc_cidr
-  subnet_cidrs    = var.subnet_cidrs
-  security_groups = var.security_groups
+  aws_region      = var.aws_region
 }
 
 module "ec2" {
@@ -16,18 +14,19 @@ module "ec2" {
 }
 
 module "s3" {
-  source              = "../../../modules/s3"
-  bucket_name         = var.bucket_name
-  versioning          = var.versioning
-  block_public_access = var.block_public_access
+  source      = "../../../modules/s3"
+  environment = var.environment
+  aws_region  = var.aws_region
+  bucket_name = var.bucket_name
+  versioning  = var.versioning
 }
 
 module "lambda" {
   source               = "../../../modules/lambda"
+  aws_region           = var.aws_region
   lambda_function_name = var.lambda_function_name
   s3_bucket_name       = module.s3.bucket_id
   lambda_handler       = var.lambda_handler
   runtime              = var.runtime
   lambda_zip_path      = var.lambda_zip_path
-  kms_key_arn          = module.s3.kms_key_arn
 }
