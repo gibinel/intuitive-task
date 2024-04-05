@@ -43,5 +43,7 @@ resource "aws_lambda_function" "lambda" {
   s3_bucket     = var.s3_bucket_name
   s3_key        = var.lambda_zip_path
 
+  tags = local.required_tags
+
   depends_on = [aws_iam_role_policy_attachment.lambda_s3_access_attachment]
 }

@@ -19,8 +19,20 @@ variable "subnet_cidrs" {
 variable "security_groups" {
   description = "Map of security group names and rules"
   type = map(object({
-    ingress = list(map(any))
-    egress  = list(map(any))
+    ingress = list(object({
+      description = string
+      from_port   = number
+      to_port     = number
+      protocol    = string
+      cidr_blocks = list(string)
+    }))
+    egress  = list(object({
+      description = string
+      from_port   = number
+      to_port     = number
+      protocol    = string
+      cidr_blocks = list(string)
+    }))
   }))
   default = {
     "sg-example-1" = {
@@ -35,6 +47,7 @@ variable "security_groups" {
       ]
       egress = [
         {
+          description = "egress"
           from_port   = 0
           to_port     = 0
           protocol    = "-1"

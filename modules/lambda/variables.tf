@@ -1,3 +1,8 @@
+variable "environment" {
+  description = "Lamda enviroment"
+  type = string
+}
+
 variable "aws_region" {
   description = "AWS region for the Lambda function"
   type        = string
@@ -28,4 +33,16 @@ variable "runtime" {
 variable "lambda_zip_path" {
   description = "Path to the zip file containing your Lambda function code"
   type        = string
+}
+
+variable "created_by" {
+  description = "Created by Terraform tag"
+  default = "terraform"
+}
+
+locals {
+  required_tags = {
+    "Environment" = var.environment,
+    "Created by"  = var.created_by
+  }
 }

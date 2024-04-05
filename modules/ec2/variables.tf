@@ -1,3 +1,8 @@
+variable "environment" {
+  description = "EC2 enviroment"
+  type = string
+}
+
 variable "aws_region" {
   description = "AWS region to launch the EC2 instance"
   type        = string
@@ -25,8 +30,14 @@ variable "security_group_ids" {
   type        = list(string)
 }
 
-variable "tags" {
-  description = "A mapping of tags to assign to the resource"
-  type        = map(string)
-  default     = []
+variable "created_by" {
+  description = "Created by Terraform tag"
+  default = "terraform"
+}
+
+locals {
+  required_tags = {
+    "Environment" = var.environment,
+    "Created by"  = var.created_by
+  }
 }

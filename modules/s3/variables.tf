@@ -38,3 +38,15 @@ variable "block_public_access" {
     restrict_public_buckets = true
   }
 }
+
+variable "created_by" {
+  description = "Created by Terraform tag"
+  default = "terraform"
+}
+
+locals {
+  required_tags = {
+    "Environment" = var.environment,
+    "Created by"  = var.created_by
+  }
+}
