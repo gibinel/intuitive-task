@@ -1,6 +1,6 @@
 terraform {
   backend "s3" {
-    bucket         = "intuitivetfstate2024"
+    bucket         = "tfstate202404052300"
     key            = "eu-west-1/qa.tfstate"
     region         = "eu-central-1"
     dynamodb_table = "terraform-state-lock-dynamo"

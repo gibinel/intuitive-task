@@ -21,7 +21,7 @@ provider "aws" {
 }
 
 resource "aws_s3_bucket" "tf_state" {
-  bucket = "tfstate2024"
+  bucket = "tfstate202404052300"
 }
 
 resource "aws_s3_bucket_server_side_encryption_configuration" "encryption" {
