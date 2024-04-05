@@ -1,6 +1,6 @@
 variable "environment" {
   description = "Lamda enviroment"
-  type = string
+  type        = string
 }
 
 variable "aws_region" {
@@ -22,6 +22,7 @@ variable "s3_bucket_name" {
 variable "lambda_handler" {
   description = "The function entrypoint in your code"
   type        = string
+  default     = "lambda_function"
 }
 
 variable "runtime" {
@@ -37,7 +38,7 @@ variable "lambda_zip_path" {
 
 variable "created_by" {
   description = "Created by Terraform tag"
-  default = "terraform"
+  default     = "terraform"
 }
 
 locals {

@@ -6,7 +6,6 @@ variable "environment" {
 variable "aws_region" {
   description = "AWS region to launch the EC2 instance"
   type        = string
-  default     = "us-east-1"
 }
 
 variable "ami_id" {
