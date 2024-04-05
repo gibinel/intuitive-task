@@ -9,6 +9,7 @@ resource "aws_s3_bucket" "bucket" {
 
 resource "aws_s3_bucket_versioning" "enable_versioning" {
   bucket = aws_s3_bucket.bucket.id
+  
   versioning_configuration {
     status = var.versioning
   }

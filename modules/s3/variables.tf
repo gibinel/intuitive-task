@@ -15,8 +15,8 @@ variable "bucket_name" {
 
 variable "versioning" {
   description = "State of versioning for the S3 bucket"
-  type        = bool
-  default     = true
+  type        = string
+  default     = "Enabled"
 }
 
 variable "server_side_encryption" {

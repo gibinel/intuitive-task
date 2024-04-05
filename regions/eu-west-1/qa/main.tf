@@ -13,12 +13,12 @@ module "ec2" {
   security_group_ids = module.network.security_group_ids
 }
 
-# module "s3" {
-#   source      = "../../../modules/s3"
-#   environment = var.environment
-#   aws_region  = var.aws_region
-#   bucket_name = var.bucket_name
-# }
+module "s3" {
+  source      = "../../../modules/s3"
+  environment = var.environment
+  aws_region  = var.aws_region
+  bucket_name = var.bucket_name
+}
 
 # module "lambda" {
 #   source               = "../../../modules/lambda"
