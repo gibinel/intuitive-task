@@ -9,7 +9,7 @@ resource "aws_s3_bucket" "bucket" {
 
 resource "aws_s3_bucket_versioning" "enable_versioning" {
   bucket = aws_s3_bucket.bucket.id
-  
+
   versioning_configuration {
     status = var.versioning
   }
@@ -23,6 +23,11 @@ resource "aws_s3_bucket_server_side_encryption_configuration" "encryption" {
       sse_algorithm = var.server_side_encryption["sse_algorithm"]
     }
   }
+}
+
+resource "aws_kms_key" "s3_key" {
+  description             = "This key is used to encrypt bucket objects"
+  deletion_window_in_days = 7
 }
 
 resource "aws_s3_bucket_public_access_block" "s3_public_access" {
