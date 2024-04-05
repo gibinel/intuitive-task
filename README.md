@@ -6,7 +6,7 @@ Thank you for taking your time to interview with Intuitive!! For this portion of
 
 Feel free to reach out to the Intuitive team for any clarifications.
 
-We anticipate this task to take about 3 hours. If you feel like the task is taking more than stipulated, feel free to stop and discuss the details with us in the debreif!
+We anticipate this task to take about 3 hours. If you feel like the task is taking more than stipulated, feel free to stop and discuss the details with us in the debrief!
 
 ## Challenge
 
