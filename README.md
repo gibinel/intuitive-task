@@ -8,7 +8,7 @@ Feel free to reach out to the Intuitive team for any clarifications.
 
 We anticipate this task to take about 3 hours. If you feel like the task is taking more than stipulated, feel free to stop and discuss the details with us in the debrief!
 
-## Challenge
+## Challenge : Terraform
 
 What you have is a Terraform code
 
