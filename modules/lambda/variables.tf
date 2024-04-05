@@ -25,7 +25,7 @@ variable "runtime" {
   default     = "python3.0"
 }
 
-variable "lambda_zips_path" {
+variable "lambda_zip_path" {
   description = "Path to the zip file containing your Lambda function code"
   type        = string
 }

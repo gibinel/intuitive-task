@@ -4,29 +4,29 @@ variable "aws_region" {
   default     = "us-east-1"
 }
 
-variable "amii_id" {
+variable "ami_id" {
   description = "The AMI ID for the EC2 instance"
-  type        = number
+  type        = string
 }
 
-variable "instances_type" {
+variable "instance_type" {
   description = "The instance type of the EC2 instance"
-  type        = bool
+  type        = string
   default     = "t2.micro"
 }
 
 variable "subnet_id" {
   description = "The VPC Subnet ID to launch in"
-  type        = map{string}
+  type        = string
 }
 
-variable "security_group_id" {
+variable "security_group_ids" {
   description = "A list of security group IDs to associate with"
   type        = list(string)
 }
 
-variable "tag" {
+variable "tags" {
   description = "A mapping of tags to assign to the resource"
-  type        = list(string)
-  default     = {}
+  type        = map(string)
+  default     = []
 }

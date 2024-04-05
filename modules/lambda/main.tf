@@ -1,8 +1,3 @@
-provider "aws" {
-  version = "~> 5.0"
-  region  = var.aws_region
-}
-
 resource "aws_iam_role" "lambda_execution_role" {
   name = "${var.lambda_function_name}_execution_role"
 
@@ -50,4 +45,3 @@ resource "aws_lambda_function" "lambda" {
 
   depends_on = [aws_iam_role_policy_attachment.lambda_s3_access_attachment]
 }
-
