@@ -20,8 +20,8 @@ Expectation from the TF code is for multi-region and multi-environment deploymen
 - We would want the recommended best practices to be followed
 - code should be re-usable, structured, scalable, ease of management of the code
 - code should be parameterized
-- Identify the pitfalls w.r.t to security best practices, recommended code management, gaurd rails, code structure and provide fix
-- You have a sample python function zip into "lambda_pacakge.zip", please only use this package
+- Identify the pitfalls w.r.t to security best practices, recommended code management, guard rails, code structure and provide fix
+- You have a sample python function zip into "lambda_package.zip", please only use this package
 
 ## Challenge: GitHub Action
 
