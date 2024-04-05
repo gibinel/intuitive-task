@@ -25,11 +25,11 @@ variable "lambda_function_name" {
 }
 
 variable "lambda_handler" {
-  default = "rolecall.lambda_handler"
+  default = "lambda_package/rolecall.lambda_handler"
 }
 
 variable "runtime" {
-  default = "python3.8"
+  default = "python3.12"
 }
 
 variable "lambda_zip_path" {

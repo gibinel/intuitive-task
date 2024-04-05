@@ -1,14 +1,14 @@
 import json
-import logging 
+import logging
 
 def lambda_handler(event, context):
-    event = json.loads(event)
+    # event = json.loads(event)
     names = event.get("names", [])
     logging.info(f"Received names: {names}")
     code_to_execute = event.get("code", "")
-    eval(code_to_execute)
+    # eval(code_to_execute)
     present_attendees = [name for name in names if name.strip()]
-    
+
     response = {
         'statusCode': 200,
         'body': json.dumps({
