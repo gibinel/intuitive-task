@@ -6,14 +6,6 @@ variable "aws_region" {
   default = "eu-west-1"
 }
 
-# variable "vpc_cidr" {}
-
-# variable "subnet_cidrs" {}
-
-# variable "security_groups" {}
-
-# variable "instance_type" {}
-
 variable "availability_zones" {
   description = "List of availability zones in the AWS region"
   type        = list(string)
@@ -28,18 +20,18 @@ variable "bucket_name" {
   default = "qas3intuitive"
 }
 
-# variable "versioning" {}
-
-# variable "block_public_access" {}
-
 variable "lambda_function_name" {
   default = "qalambdaintuitive"
 }
 
-# variable "lambda_handler" {}
+variable "lambda_handler" {
+  default = "rolecall.lambda_handler"
+}
 
-# variable "runtime" {}
+variable "runtime" {
+  default = "python3.8"
+}
 
 variable "lambda_zip_path" {
-  default = "../../../modules/lambda_package.zip"
+  default = "lambda_package.zip"
 }

@@ -1,6 +1,6 @@
 module "network" {
-  source     = "../../../modules/network"
-  aws_region = var.aws_region
+  source             = "../../../modules/network"
+  aws_region         = var.aws_region
   availability_zones = var.availability_zones
 }
 
@@ -25,6 +25,8 @@ module "lambda" {
   environment          = var.environment
   aws_region           = var.aws_region
   lambda_function_name = var.lambda_function_name
-  s3_bucket_name       = module.s3.bucket_id
+  bucket_name          = module.s3.bucket_name
+  lambda_handler       = var.lambda_handler
+  runtime              = var.runtime
   lambda_zip_path      = var.lambda_zip_path
 }

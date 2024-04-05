@@ -5,7 +5,7 @@ resource "aws_iam_role" "lambda_execution_role" {
     Version = "2012-10-17"
     Statement = [
       {
-        Action = "sts::AssumeRole"
+        Action = "sts:AssumeRole"
         Principal = {
           Service = "lambda.amazonaws.com"
         }
@@ -23,7 +23,7 @@ resource "aws_iam_policy" "lambda_s3_access" {
     Statement = [
       {
         Action   = ["s3:GetObject", "s3:PutObject"],
-        Resource = "arn:aws::s3:::${var.s3_bucket_name}/*",
+        Resource = "arn:aws:s3:::${var.bucket_name}/*",
         Effect   = "Allow"
       },
     ]
@@ -40,7 +40,7 @@ resource "aws_lambda_function" "lambda" {
   handler       = var.lambda_handler
   role          = aws_iam_role.lambda_execution_role.arn
   runtime       = var.runtime
-  s3_bucket     = var.s3_bucket_name
+  s3_bucket     = var.bucket_name
   s3_key        = var.lambda_zip_path
 
   tags = local.required_tags
