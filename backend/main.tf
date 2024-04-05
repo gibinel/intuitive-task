@@ -38,6 +38,27 @@ resource "aws_s3_bucket_acl" "s3_acl" {
   acl    = "private"
 }
 
+resource "aws_s3_bucket_versioning" "s3_versioning" {
+  bucket = aws_s3_bucket.tf_state.id
+
+  versioning_configuration {
+    status = "Enabled"
+  }
+}
+
+resource "aws_s3_bucket_object_lock_configuration" "s3_lock" {
+  bucket = aws_s3_bucket.tf_state.id
+
+  rule {
+    default_retention {
+      mode = "COMPLIANCE"
+      days = 5
+    }
+  }
+
+  depends_on = [ aws_s3_bucket_versioning.s3_versioning ]
+}
+
 resource "aws_dynamodb_table" "dynamodb-terraform-state-lock" {
   name           = "terraform-state-lock-dynamo"
   hash_key       = "LockID"
