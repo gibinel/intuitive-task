@@ -1,25 +1,37 @@
-variable "vpc_cidr" {}
+variable "environment" {
+  default = "staging"
+}
 
-variable "subnet_cidrs" {}
+variable "aws_region" {
+  default = "eu-west-1"
+}
 
-variable "security_groups" {}
+variable "availability_zones" {
+  description = "List of availability zones in the AWS region"
+  type        = list(string)
+  default     = ["eu-west-1a", "eu-west-1b", "eu-west-1c"]
+}
 
-variable "instance_type" {}
+variable "ami_id" {
+  default = "ami-0e95d283a666c6ea0"
+}
 
-variable "ami_id" {}
+variable "bucket_name" {
+  default = "stagings3intuitive"
+}
 
-variable "ec2_tags" {}
+variable "lambda_function_name" {
+  default = "staginglambdaintuitive"
+}
 
-variable "bucket_name" {}
+variable "lambda_handler" {
+  default = "lambda_package/rolecall.lambda_handler"
+}
 
-variable "versioning" {}
+variable "runtime" {
+  default = "python3.12"
+}
 
-variable "block_public_access" {}
-
-variable "lambda_function_name" {}
-
-variable "lambda_handler" {}
-
-variable "runtime" {}
-
-variable "lambda_zip_path" {}
+variable "lambda_zip_path" {
+  default = "lambda_package.zip"
+}
