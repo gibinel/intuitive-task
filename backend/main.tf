@@ -21,42 +21,17 @@ provider "aws" {
 }
 
 resource "aws_s3_bucket" "tf_state" {
-  bucket = "intuitivetfstate2024"
+  bucket = "tfstate2024"
 }
 
-resource "aws_s3_bucket_ownership_controls" "s3_ownership" {
-  bucket = aws_s3_bucket.tf_state.id
-  rule {
-    object_ownership = "BucketOwnerPreferred"
-  }
-}
-
-resource "aws_s3_bucket_acl" "s3_acl" {
-  depends_on = [aws_s3_bucket_ownership_controls.s3_ownership]
-
-  bucket = aws_s3_bucket.tf_state.id
-  acl    = "private"
-}
-
-resource "aws_s3_bucket_versioning" "s3_versioning" {
-  bucket = aws_s3_bucket.tf_state.id
-
-  versioning_configuration {
-    status = "Enabled"
-  }
-}
-
-resource "aws_s3_bucket_object_lock_configuration" "s3_lock" {
+resource "aws_s3_bucket_server_side_encryption_configuration" "encryption" {
   bucket = aws_s3_bucket.tf_state.id
 
   rule {
-    default_retention {
-      mode = "COMPLIANCE"
-      days = 5
+    apply_server_side_encryption_by_default {
+      sse_algorithm = "AES256"
     }
   }
-
-  depends_on = [ aws_s3_bucket_versioning.s3_versioning ]
 }
 
 resource "aws_dynamodb_table" "dynamodb-terraform-state-lock" {

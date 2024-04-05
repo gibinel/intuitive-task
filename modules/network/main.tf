@@ -10,7 +10,7 @@ resource "aws_subnet" "subnets" {
 
   vpc_id            = aws_vpc.main.id
   cidr_block        = each.value
-  availability_zone = elements(savailability_zones, each.key)
+  availability_zone = element(var.availability_zones, each.key)
   tags = {
     Name = "Subnet ${each.key + 1}"
   }
@@ -26,20 +26,21 @@ resource "aws_security_group" "sgs" {
   dynamic "ingress" {
     for_each = each.value.ingress
     content {
-      description = ingress.values.description
-      from_port   = ingress.value.from_ports
+      description = ingress.value.description
+      from_port   = ingress.value.from_port
       to_port     = ingress.value.to_port
       protocol    = ingress.value.protocol
-      cidr_blocks = ingress.valuu.cidr_blocks
+      cidr_blocks = ingress.value.cidr_blocks
     }
   }
 
   dynamic "egress" {
     for_each = each.value.egress
     content {
-      from_port   = egrees.value.from_port
-      to_port     = egrees.value.to_port
-      protocol    = egrees.value.protocol
+      description = egress.value.description
+      from_port   = egress.value.from_port
+      to_port     = egress.value.to_port
+      protocol    = egress.value.protocol
       cidr_blocks = egress.value.cidr_blocks
     }
   }

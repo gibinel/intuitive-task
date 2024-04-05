@@ -14,6 +14,12 @@ variable "aws_region" {
 
 # variable "instance_type" {}
 
+variable "availability_zones" {
+  description = "List of availability zones in the AWS region"
+  type        = list(string)
+  default     = ["eu-west-1a", "eu-west-1b", "eu-west-1c"]
+}
+
 variable "ami_id" {
   default = "ami-0e95d283a666c6ea0"
 }

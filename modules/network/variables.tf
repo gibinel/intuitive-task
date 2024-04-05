@@ -16,6 +16,12 @@ variable "subnet_cidrs" {
   default     = ["10.0.1.0/24", "10.0.2.0/24"]
 }
 
+variable "availability_zones" {
+  description = "List of availability zones in the AWS region"
+  type        = list(string)
+  default     = []
+}
+
 variable "security_groups" {
   description = "Map of security group names and rules"
   type = map(object({
@@ -35,10 +41,10 @@ variable "security_groups" {
     }))
   }))
   default = {
-    "sg-example-1" = {
+    "ssh-sg" = {
       ingress = [
         {
-          description = "SSH"
+          description = "SSH inbound"
           from_port   = 22
           to_port     = 22
           protocol    = "tcp"
@@ -47,7 +53,7 @@ variable "security_groups" {
       ]
       egress = [
         {
-          description = "egress"
+          description = "SSH outbound"
           from_port   = 0
           to_port     = 0
           protocol    = "-1"
