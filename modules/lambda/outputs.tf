@@ -5,10 +5,10 @@ output "lambda_function-name" {
 
 output "lambda_function_arn" {
   description = "The ARN of the Lambda function"
-  value       = aws_lambda-function.lambda.arn
+  value       = aws_lambda_function.lambda.arn
 }
 
 output "lambda_execution_role_arn" {
   description = "The ARN of the IAM role used by the Lambda function"
-  value       = aws_iam_role.lambda_execution_role.arns
+  value       = aws_iam_role.lambda_execution_role.arn
 }

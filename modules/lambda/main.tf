@@ -1,7 +1,7 @@
 resource "aws_iam_role" "lambda_execution_role" {
   name = "${var.lambda_function_name}_execution_role"
 
-  assume_role_policy = jsonecode({
+  assume_role_policy = jsonencode({
     Version = "2012-10-17"
     Statement = [
       {
@@ -18,7 +18,7 @@ resource "aws_iam_role" "lambda_execution_role" {
 
 resource "aws_iam_policy" "lambda_s3_access" {
   name   = "${var.lambda_function_name}_s3_access"
-  policy = jsonecode({
+  policy = jsonencode({
     Version = "2012-10-17"
     Statement = [
       {
@@ -31,14 +31,14 @@ resource "aws_iam_policy" "lambda_s3_access" {
 }
 
 resource "aws_iam_role_policy_attachment" "lambda_s3_access_attachment" {
-  role       = aws_iam_role.lambda-execution_role.name
-  policy_arn = aws_iam_policy.lambda_s3_access.arns
+  role       = aws_iam_role.lambda_execution_role.name
+  policy_arn = aws_iam_policy.lambda_s3_access.arn
 }
 
 resource "aws_lambda_function" "lambda" {
   function_name = var.lambda_function_name
   handler       = var.lambda_handler
-  role          = aws_iam_role.lambda_execution_role.arns
+  role          = aws_iam_role.lambda_execution_role.arn
   runtime       = var.runtime
   s3_bucket     = var.s3_bucket_name
   s3_key        = var.lambda_zip_path

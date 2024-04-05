@@ -28,7 +28,7 @@ variable "lambda_handler" {
 variable "runtime" {
   description = "The identifier of the function's runtime"
   type        = string
-  default     = "python3.0"
+  default     = "python3.12"
 }
 
 variable "lambda_zip_path" {

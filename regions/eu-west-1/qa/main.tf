@@ -20,11 +20,11 @@ module "s3" {
   bucket_name = var.bucket_name
 }
 
-# module "lambda" {
-#   source               = "../../../modules/lambda"
-#   environment          = var.environment
-#   aws_region           = var.aws_region
-#   lambda_function_name = var.lambda_function_name
-#   s3_bucket_name       = module.s3.bucket_id
-#   lambda_zip_path      = var.lambda_zip_path
-# }
+module "lambda" {
+  source               = "../../../modules/lambda"
+  environment          = var.environment
+  aws_region           = var.aws_region
+  lambda_function_name = var.lambda_function_name
+  s3_bucket_name       = module.s3.bucket_id
+  lambda_zip_path      = var.lambda_zip_path
+}
