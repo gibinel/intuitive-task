@@ -17,7 +17,7 @@ variable "ami_id" {
 }
 
 variable "bucket_name" {
-  default = "prods3intuitive"
+  default = "prod.eu-west-1.s3intuitive"
 }
 
 variable "lambda_function_name" {
