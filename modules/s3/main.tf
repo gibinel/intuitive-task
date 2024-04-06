@@ -43,6 +43,7 @@ resource "aws_s3_bucket_public_access_block" "s3_public_access" {
 resource "aws_s3_object" "lambda_package_s3upload" {
   key        = "lambda_package.zip"
   bucket     = aws_s3_bucket.bucket.id
-  source     = "../lambda_package.zip"
+  source     = "${path.module}/../lambda_package.zip"
+  source_hash = filemd5("${path.module}/../lambda_package.zip")
   kms_key_id = aws_kms_key.s3_key.arn
 }
