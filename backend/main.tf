@@ -15,9 +15,6 @@ terraform {
 
 provider "aws" {
   region = "eu-central-1"
-  # DOESN'T FUCKING WORK!!!!!
-  # shared_config_files      = ["%USERPROFILE%\\.aws\\config"]
-  # shared_credentials_files = ["%USERPROFILE%\\.aws\\credentials"]
 }
 
 resource "aws_s3_bucket" "tf_state" {
