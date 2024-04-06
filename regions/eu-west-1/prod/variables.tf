@@ -1,4 +1,5 @@
 variable "environment" {
+  description = "Test deploy"
   default = "prod"
 }
 
