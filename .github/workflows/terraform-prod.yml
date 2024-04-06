@@ -3,7 +3,7 @@
 # `terraform init`, `terraform fmt`, and `terraform plan` (speculative plan via Terraform Cloud). On push events
 # to the "main" branch, `terraform apply` will be executed.
 
-name: 'Terraform'
+name: 'Terraform-prod'
 
 on:
   push:
@@ -26,14 +26,19 @@ permissions:
 
 jobs:
   terraform:
-    name: 'Terraform'
+    name: 'Terraform-$environment'
     runs-on: ubuntu-latest
+
+    strategy:
+      max-parallel: 2
+      matrix:
+        regions: ['eu-west-1', 'eu-west-2']
 
     # Use the Bash shell regardless whether the GitHub Actions runner is ubuntu-latest, macos-latest, or windows-latest
     defaults:
       run:
         shell: bash
-        working-directory: "regions/*/$environment/**"
+        working-directory: ./regions/${{ matrix.regions }}/$environment
 
     steps:
     # Checkout the repository to the GitHub Actions runner
