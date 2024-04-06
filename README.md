@@ -23,7 +23,7 @@ Expectation from the TF code is for multi-region and multi-environment deploymen
 - Identify the pitfalls w.r.t to security best practices, recommended code management, guard rails, code structure and provide fix
 - You have a sample python function zip into "lambda_package.zip", please only use this package
 
-## Challenge: GitHub Action
+## Challenge: GitHub Actions
 
 Now that you have a working TF code which does the required deployment, we would like the execution of TF via GitHub Actions CI/CD pipeline.
 
