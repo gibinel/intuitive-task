@@ -42,6 +42,7 @@ resource "aws_lambda_function" "lambda" {
   runtime       = var.runtime
   s3_bucket     = var.bucket_name
   s3_key        = var.lambda_zip_path
+  kms_key_arn   = var.kms_key_arn
 
   tags = local.required_tags
 

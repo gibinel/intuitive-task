@@ -15,19 +15,20 @@ resource "aws_s3_bucket_versioning" "enable_versioning" {
   }
 }
 
+resource "aws_kms_key" "s3_key" {
+  description             = "This key is used to encrypt bucket objects"
+  deletion_window_in_days = 7
+}
+
 resource "aws_s3_bucket_server_side_encryption_configuration" "encryption" {
   bucket = aws_s3_bucket.bucket.id
 
   rule {
     apply_server_side_encryption_by_default {
-      sse_algorithm = var.server_side_encryption["sse_algorithm"]
+      kms_master_key_id = aws_kms_key.s3_key.arn
+      sse_algorithm     = var.server_side_encryption["sse_algorithm"]
     }
   }
-}
-
-resource "aws_kms_key" "s3_key" {
-  description             = "This key is used to encrypt bucket objects"
-  deletion_window_in_days = 7
 }
 
 resource "aws_s3_bucket_public_access_block" "s3_public_access" {

@@ -18,6 +18,11 @@ variable "bucket_name" {
   type        = string
 }
 
+variable "kms_key_arn" {
+  description = "ARN of the S3 KMS key"
+  type        = string
+}
+
 variable "lambda_handler" {
   description = "The function entrypoint in your code"
   type        = string

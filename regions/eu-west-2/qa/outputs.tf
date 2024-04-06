@@ -15,7 +15,7 @@ output "qa_ec2_instance_id" {
 }
 
 output "qa_s3_bucket_id" {
-  value = module.s3.bucket_id
+  value = module.s3.bucket_name
 }
 
 output "qa_lambda_function_name" {

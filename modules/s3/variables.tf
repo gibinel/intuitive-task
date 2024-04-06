@@ -23,7 +23,8 @@ variable "server_side_encryption" {
   description = "Server-side encryption configuration"
   type        = map(any)
   default = {
-    sse_algorithm = "AES256"
+    # sse_algorithm = "AES256"
+    sse_algorithm = "aws:kms"
   }
 }
 

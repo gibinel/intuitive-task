@@ -29,4 +29,5 @@ module "lambda" {
   lambda_handler       = var.lambda_handler
   runtime              = var.runtime
   lambda_zip_path      = var.lambda_zip_path
+  kms_key_arn          = module.s3.kms_key_arn
 }

@@ -15,7 +15,7 @@ output "prod_ec2_instance_id" {
 }
 
 output "prod_s3_bucket_id" {
-  value = module.s3.bucket_id
+  value = module.s3.bucket_name
 }
 
 output "prod_lambda_function_name" {
