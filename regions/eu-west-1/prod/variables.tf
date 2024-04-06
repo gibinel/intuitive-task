@@ -1,5 +1,5 @@
 variable "environment" {
-  description = "Test deploy 1"
+  description = "Test deploy 2"
   default = "prod"
 }
 
